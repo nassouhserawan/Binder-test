@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'binder.sa.test.app',
   appName: 'binder-test',
   webDir: 'www',
   server: {
