@@ -1,4 +1,5 @@
 node_modules
+.angular
 .angular/cache/17.1.1/babel-webpack/fd9f4a05395e0e09f20bbbe402b25deea20804ca503b45f64522a1ca184d8dd7.json
 .angular/cache/17.1.1/babel-webpack/fbebcbfb60a4b64cf4451235a0b6f9791c76c13e53422aa6184aa38076b55b42.json
 .angular/cache/17.1.1/babel-webpack/fb835c359adfa311269b971c25e2f46a3361fcd173cf27960c39e4445bbc3c56.json
@@ -387,3 +388,10 @@ node_modules
 .angular/cache/17.1.1/babel-webpack/0122eab4b8e2c96ffc1c817fdd6b823f6d853f400e7a63ddbe5776d00cc6d7f6.json
 .angular/cache/17.1.1/angular-webpack/bb6ac7559d90553e65fb54e6f205340a2b949d9b/index.pack
 .angular/cache/17.1.1/angular-webpack/bb6ac7559d90553e65fb54e6f205340a2b949d9b/0.pack
+.angular/cache/17.1.1/babel-webpack/dc0be742469cd0b5dd5d2e85f6c847875d57942e3c2f0aae228ba1055ef7f3a7.json
+.angular/cache/17.1.1/babel-webpack/6094632f4744c785b20001ac6d1f6c3b0b49f047710e3263d20aca98de66759f.json
+.angular/cache/17.1.1/babel-webpack/3180b2dfd6d6764a15c2823b88be7c79cbc89d5ea7dac68b8100e3f740192bfa.json
+.angular/cache/17.1.1/babel-webpack/07c5564bb406f6b3ea2465bf5531c7a6bf58e2050845894433dec0affd37b266.json
+.angular/cache/17.1.1/angular-webpack/bb6ac7559d90553e65fb54e6f205340a2b949d9b/index.pack.old
+.angular/cache/17.1.1/angular-webpack/bb6ac7559d90553e65fb54e6f205340a2b949d9b/2.pack
+.angular/cache/17.1.1/angular-webpack/bb6ac7559d90553e65fb54e6f205340a2b949d9b/1.pack
