@@ -13,7 +13,7 @@ const routes: Routes = [
   // },
   {
     path: '',
-    redirectTo: 'tabs',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {

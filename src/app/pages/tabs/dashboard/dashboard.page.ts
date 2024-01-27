@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
+
+  AddToWishList(){}
+  AddToCart(){}
+
   constructor() { }
 
   ngOnInit() {
