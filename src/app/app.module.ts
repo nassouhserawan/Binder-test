@@ -10,10 +10,15 @@ import { AppStoreModule } from './store/app.store.module';
 import { EffectsModule } from '@ngrx/effects';
 import { IonicStorageModule, Storage } from '@ionic/storage-angular';
 import { StorageService } from './services/storage/storage.service';
+import { CourseEffects } from './store/course/course.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CartEffects } from './store/cart/cart.effects';
+import { WishEffects } from './store/wish/wish.effects';
 
 export function provideStorage(storage: Storage) {
   return new StorageService(storage, {
-    carts: [],
+    cart: [],
     wishList: [],
     courses: [],
     profile: {
@@ -37,8 +42,9 @@ export function provideStorage(storage: Storage) {
     AppRoutingModule,
     ...AppStoreModule,
     IonicStorageModule.forRoot(),
-    //StoreDevtoolsModule.instrument({maxAge:25}),
-    // EffectsModule.forRoot([])],
+    StoreDevtoolsModule.instrument({maxAge:25}),
+     EffectsModule.forRoot([CourseEffects,CartEffects,WishEffects]),
+     HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

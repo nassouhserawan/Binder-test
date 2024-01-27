@@ -1,26 +1,33 @@
+import { AddToCart, AddToCartFailure, AddToCartSuccess, GetCart, GetCartFailure, GetCartSuccess } from "./cart/cart.action";
+import { GetCourses, GetCoursesFailure, GetCoursesSuccess } from "./course/course.action";
+import { AddToWish, AddToWishFailure, AddToWishSuccess } from "./wish/wish.action";
 
 export enum ActionTypes {
 
-    // Create Controller Actions
-    CreateController = "[Login Page] Create Controller",
-    CreateControllerSuccess = "[Login Page] Create Controller Success",
-    CreateControllerFailure = "[Login Page] Create Controller Failure",
+    // Get Courses Actions
+    GetCourses = "[Dashboard Page] Get Courses",
+    GetCoursesSuccess = "[Dashboard Page] Get Courses Success",
+    GetCoursesFailure = "[Dashboard Page] Get Courses Failure",
 
-    // Delete Controller Actions
-    DeleteController = "[Login Page] Delete Controller",
-    DeleteControllerSuccess = "[Login Page] Delete Controller Success",
-    DeleteControllerFailure = "[Login Page] Delete Controller Failure",
+     // Get Cart Actions
+     GetCart = "[Dashboard Page] Get Cart",
+     GetCartSuccess = "[Dashboard Page] Get Cart Success",
+     GetCartFailure = "[Dashboard Page] Get Cart Failure",
 
 
-    EditController = "[Login Page] Edit Controller",
-    EditControllerSuccess = "[Login Page] Edit Controller Success",
-    EditControllerFailure = "[Login Page] Edit Controller Failure"
+     // Add to Cart Actions
+     AddToCart = "[Dashboard Page] Add To Cart",
+     AddToCartSuccess = "[Dashboard Page] Add To Cart Success",
+     AddToCartFailure = "[Dashboard Page] Add To Cart Failure",
+
+      // Add to Wish Actions
+      AddToWish = "[Dashboard Page] Add To Wish",
+      AddToWishSuccess = "[Dashboard Page] Add To Wish Success",
+      AddToWishFailure = "[Dashboard Page] Add To Wish Failure",
 }
 
-// export type ActionsUnion =
-//     GetDefaultController | GetDefaultControllerSuccess | GetDefaultControllerFailure |
-//     GetSerialNumber | GetSerialNumberSuccess | GetSerialNumberFailure |
-//     GetControllers | GetControllersSuccess | GetControllersFailure |
-//     CreateController | CreateControllerSuccess | CreateControllerFailure |
-//     EditController | EditControllerSuccess | EditControllerFailure | 
-//     DeleteController | DeleteControllerSuccess | DeleteControllerFailure;
+export type ActionsUnion =
+    GetCourses | GetCoursesSuccess | GetCoursesFailure |
+    GetCart | GetCartSuccess | GetCartFailure |
+    AddToCart | AddToCartSuccess | AddToCartFailure |
+    AddToWish | AddToWishSuccess | AddToWishFailure;

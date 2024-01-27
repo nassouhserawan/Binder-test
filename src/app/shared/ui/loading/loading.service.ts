@@ -22,6 +22,8 @@ export class LoadingService {
     }
 
     dismissLoading() {
-        this.loading.dismiss();
+        this.loadingController.getTop().then((modal) => {
+            modal?.dismiss();
+        });
     }
 }

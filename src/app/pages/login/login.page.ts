@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { LoadingService } from 'src/app/shared/ui/loading/loading.service';
 import { ToastService } from 'src/app/shared/ui/toast/toast.service';
-import { Profile } from 'src/models/Profile';
+import { Profile } from 'src/models/profile';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +40,7 @@ export class LoginPage implements OnInit {
         }
       });
     }
+    
   ngOnInit() {
   }
 

@@ -17,7 +17,7 @@ export class ToastService {
             message: message,
             color: 'success',
             icon: 'checkmark-circle-outline',
-            duration: 1000
+            duration: 3000
         }).then((toast) => {
             toast.present();
         });
@@ -27,7 +27,7 @@ export class ToastService {
             message: message,
             color: 'danger',
             icon: 'alert-circle-outline',
-            duration: 1000
+            duration: 3000
         }).then((toast) => {
             toast.present();
         });

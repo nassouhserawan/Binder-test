@@ -25,10 +25,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/course-details/course-details.module').then( m => m.CourseDetailsPageModule)
   },
   {
-    path: 'wish-list',
-    loadChildren: () => import('./pages/wish-list/wish-list.module').then( m => m.WishListPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
