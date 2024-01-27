@@ -73,7 +73,6 @@ export class DashboardPage implements OnInit {
   }
   clicked=false;
   AddToWishList(item: Course) {
-   console.log(item);
     this.store.dispatch(new fromWishActions.AddToWish(item));
     setTimeout(() => {
       this.store.dispatch(new GetCourses);

@@ -31,5 +31,15 @@ export class CartEffects {
         )
     });
 
+    DeleteFromCart$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(ActionTypes.DeleteFromCart),
+            mergeMap(data =>
+                this.cartService.DeleteCartItem(data['name'])),
+            map(res => new fromCartAction.DeleteFromCartSuccess(res)),
+            catchError((err) => of(new fromCartAction.DeleteFromCartFailure(err))))
+
+    });
+
     constructor(private actions$: Actions, private cartService: CartService) { }
 }

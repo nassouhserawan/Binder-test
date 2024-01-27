@@ -32,7 +32,7 @@ export class CartService {
                     observe.next(arrayOfCartItem);
                     observe.complete();
                 } else {
-                    this.toastService.ShowErrorToast(cartItem.courseName+" already exists in the cart");
+                    this.toastService.ShowErrorToast(cartItem.courseName + " already exists in the cart");
                 }
             }, 5);
         });
@@ -40,15 +40,30 @@ export class CartService {
 
     GetCartItems() {
         return new Observable(observe => {
-          setTimeout(async () => {
-            if (this.storage) {
-             await this.storage.load();
-              await this.storage.getValue('cart').then((cartItems: Course[]) => {
-                observe.next(cartItems);
-                observe.complete();
-              });
-            }
-          }, 5);
+            setTimeout(async () => {
+                if (this.storage) {
+                    await this.storage.load();
+                    await this.storage.getValue('cart').then((cartItems: Course[]) => {
+                        observe.next(cartItems);
+                        observe.complete();
+                    });
+                }
+            }, 5);
         });
-      }
+    }
+
+    DeleteCartItem(name: string) {
+        return new Observable<any>(observe => {
+            setTimeout(async () => {
+                await this.storage.load();
+                let arrayOfCartItem: Course[] = [];
+                arrayOfCartItem = await this.storage.getValue('cart');
+                let index = arrayOfCartItem.findIndex((x) => x.courseName == name);
+                arrayOfCartItem.splice(index, 1);
+                await this.storage.setValue('cart', arrayOfCartItem);
+                observe.next(true);
+                observe.complete();
+            }, 5);
+        });
+    }
 }

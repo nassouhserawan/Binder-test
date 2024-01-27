@@ -7,14 +7,15 @@ export const initialState: ICart = {
     getCartFailure: false,
     addToCartSuccess: false,
     addToCartFailure: false,
-    error: ""
+    error: "",
+    deleteFromCartSuccess: false,
+    deleteFromCartFailure: false
 };
 
 
 export function CartReducer(state = initialState, action: ActionsUnion): ICart {
-
+    let itemArray = [...state.items];
     switch (action.type) {
-
         case ActionTypes.GetCartSuccess:
             return Object.assign({}, state,
                 {
@@ -28,7 +29,7 @@ export function CartReducer(state = initialState, action: ActionsUnion): ICart {
                 {
                     getCartSuccess: false,
                     getCartFailure: true,
-                    error:action.error
+                    error: action.error
                 })
 
         // Add To Cart Success
@@ -44,6 +45,27 @@ export function CartReducer(state = initialState, action: ActionsUnion): ICart {
                 {
                     addToCartSuccess: false,
                     addToCartFailure: true,
+                })
+
+
+        case ActionTypes.DeleteFromCart:
+            let index = itemArray.findIndex((x) => x.courseName == action.name);
+            itemArray.splice(index, 1);
+            return Object.assign({}, state,
+                {
+                    items: itemArray,
+                })
+        case ActionTypes.DeleteFromCartSuccess:
+            return Object.assign({}, state,
+                {
+                    items: state.items,
+                    deleteFromCartSuccess: true,
+                    deleteFromCartFailure: false
+                })
+        case ActionTypes.DeleteFromCartFailure:
+            return Object.assign({}, state,
+                {
+                    deleteFromCartFailure: true
                 })
         default:
             return state;

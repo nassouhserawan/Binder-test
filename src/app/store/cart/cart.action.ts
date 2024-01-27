@@ -29,3 +29,19 @@ export class AddToCartFailure implements Action {
     readonly type = ActionTypes.AddToCartFailure;
     constructor(public error:string) { }
 }
+
+
+export class DeleteFromCart implements Action {
+    readonly type = ActionTypes.DeleteFromCart;
+    constructor(public name:string) { }
+}
+
+export class DeleteFromCartSuccess implements Action {
+    readonly type = ActionTypes.DeleteFromCartSuccess;
+    constructor(public payload:boolean) { }
+}
+
+export class DeleteFromCartFailure implements Action {
+    readonly type = ActionTypes.DeleteFromCartFailure;
+    constructor(public error:string) { }
+}

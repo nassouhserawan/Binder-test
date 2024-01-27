@@ -7,5 +7,7 @@ export interface ICart {
     getCartFailure:boolean;
     addToCartSuccess:boolean;
     addToCartFailure:boolean;
+    deleteFromCartSuccess:boolean;
+    deleteFromCartFailure:boolean;
     error:string;
  }
