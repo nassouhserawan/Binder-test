@@ -1,16 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>My Cart</ion-title>
+    <ion-buttons slot="start">
+        <ion-button>
+        <img width="100" src="../../../../assets/icon/logo.png" />
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="GoCheckOut()" color="success">Checkout</ion-button>
+    </ion-buttons>
+    <ion-title class="text-center">My Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">My Cart</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-list *ngFor="let item of Cart" >
+<ion-content>
+  <ion-list *ngFor="let item of Cart" style="margin: 7px;">
     <ion-card>
       <ion-card-header>
         <ion-card-title>{{item.courseName}}</ion-card-title>
@@ -19,7 +22,6 @@
       
       <ion-grid>
         <ion-row class="ion-justify-content-between">
-          
           <ion-col size="8">
             <ion-label class="course-price">₹{{(item.actualPrice-item.actualPrice*item.discountPercentage*0.01).toFixed(2)}}&nbsp;</ion-label>
             <ion-label *ngIf="item.discountPercentage>0" class="discount-price">&nbsp;₹{{item.actualPrice}}&nbsp;</ion-label>
@@ -30,3 +32,8 @@
     </ion-card>
   </ion-list>
 </ion-content>
+<ion-card style="background: blueviolet;">
+  <ion-card-header>
+    <ion-card-title>Total Price &nbsp; ₹{{TotalPrice}}</ion-card-title>
+  </ion-card-header>
+</ion-card>
