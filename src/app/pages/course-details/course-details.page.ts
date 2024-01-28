@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Course } from 'src/models/course';
 
 @Component({
   selector: 'app-course-details',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseDetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
+  Course: Course;
   ngOnInit() {
+    const item = history.state;
+    this.Course=item;
   }
 
 }

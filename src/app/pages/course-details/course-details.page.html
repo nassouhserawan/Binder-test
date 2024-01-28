@@ -1,13 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>course-details</ion-title>
+    <ion-title>{{Course.courseName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">course-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <img class="course-cover" [src]="Course.image" alt="">
 </ion-content>

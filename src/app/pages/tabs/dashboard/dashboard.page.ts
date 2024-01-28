@@ -8,6 +8,7 @@ import { CartItem } from 'src/models/cartItem';
 import { Course } from 'src/models/course';
 import * as fromCartActions from '../../../store/cart/cart.action'
 import * as fromWishActions from '../../../store/wish/wish.action'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,7 @@ import * as fromWishActions from '../../../store/wish/wish.action'
 export class DashboardPage implements OnInit {
 
   constructor(private store: Store<AppState>, private modal: ModalController,
-    private loadingService: LoadingService) {
+    private loadingService: LoadingService, private router: Router) {
     this.store.dispatch(new GetCourses);
   }
 
@@ -71,7 +72,7 @@ export class DashboardPage implements OnInit {
       this.loadingService.dismissLoading();
     }, 1000);
   }
-  clicked=false;
+  clicked = false;
   AddToWishList(item: Course) {
     this.store.dispatch(new fromWishActions.AddToWish(item));
     setTimeout(() => {
@@ -88,6 +89,11 @@ export class DashboardPage implements OnInit {
   AddToCart(item: Course) {
     this.store.dispatch(new fromCartActions.AddToCart(item));
     this.store.dispatch(new GetCourses);
+  }
+
+
+  GoToCourseDetails(item: Course) {
+    this.router.navigateByUrl("/course-details", { state: item })
   }
 
 }

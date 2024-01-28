@@ -8,6 +8,7 @@ import { CartItem } from 'src/models/cartItem';
 import { Course } from 'src/models/course';
 import * as fromCartActions from '../../../store/cart/cart.action'
 import * as fromWishActions from '../../../store/wish/wish.action'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +18,7 @@ import * as fromWishActions from '../../../store/wish/wish.action'
 export class CoursesPage implements OnInit {
 
   constructor(private store: Store<AppState>, private modal: ModalController,
-    private loadingService: LoadingService) {
+    private loadingService: LoadingService,private router:Router) {
     this.store.dispatch(new GetCourses);
   }
 
@@ -90,4 +91,7 @@ export class CoursesPage implements OnInit {
     this.store.dispatch(new GetCourses);
   }
 
+  GoToCourseDetails(item: Course) {
+    this.router.navigateByUrl("/course-details", { state: item })
+  }
 }
