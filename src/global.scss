@@ -120,7 +120,17 @@ ion-modal {
     font-size: xx-large;
     text-align: revert-layer;
     position: relative;
-    margin-left: 12%;
+    //margin-left: 12%;
     color: #981e1e;
     //left: 89%;
+}
+
+
+.no-data{
+    display: block;
+    margin-left: auto;
+    margin-right: 80px;
+    margin-top: 300px;
+    width: 50%;
+    margin-bottom: 50px;
 }

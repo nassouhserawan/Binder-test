@@ -35,8 +35,9 @@
       </ion-grid>
     </ion-card>
   </ion-list>
+  <ion-label class="no-data" style="margin-right: 60px !important;" *ngIf="Cart.length==0">No Items In Cart</ion-label>
 </ion-content>
-<ion-card style="background: blueviolet;">
+<ion-card *ngIf="Cart.length>0" style="background: blueviolet;">
   <ion-card-header>
     <ion-card-title>Total Price &nbsp; ₹{{Total}}</ion-card-title>
   </ion-card-header>

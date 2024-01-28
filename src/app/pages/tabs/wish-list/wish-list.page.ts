@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { AddToCart } from 'src/app/store/cart/cart.action';
+import { DeleteFromWish, GetWish } from 'src/app/store/wish/wish.action';
+import { Course } from 'src/models/course';
 
 @Component({
   selector: 'app-wish-list',
@@ -6,10 +11,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wish-list.page.scss'],
 })
 export class WishListPage implements OnInit {
+  AddToCart(item: Course) {
+    this.store.dispatch(new AddToCart(item));
+  }
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
+  WishList: Course[];
 
   ngOnInit() {
+    this.store.dispatch(new GetWish);
+    this.store.select('wishList').pipe().subscribe((Wish) => {
+      this.WishList = Wish.wishItems;
+      console.log(this.WishList);
+    });
   }
+
+  DeleteFromWishList(item: Course) {
+    this.store.dispatch(new DeleteFromWish(item.courseName));
+    this.store.select('wishList').pipe().subscribe((Wish) => {
+      this.WishList = Wish.wishItems;
+    });
+  }
+
 
 }

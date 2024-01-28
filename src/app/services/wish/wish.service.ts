@@ -47,4 +47,33 @@ export class WishService {
             }, 5);
         });
     }
+
+    GetWishItems() {
+        return new Observable(observe => {
+            setTimeout(async () => {
+                if (this.storage) {
+                    await this.storage.load();
+                    await this.storage.getValue('wishList').then((wishItems: Course[]) => {
+                        observe.next(wishItems);
+                        observe.complete();
+                    });
+                }
+            }, 5);
+        });
+    }
+
+    DeleteWishItem(name: string) {
+        return new Observable<any>(observe => {
+            setTimeout(async () => {
+                await this.storage.load();
+                let arrayOfWishItem: Course[] = [];
+                arrayOfWishItem = await this.storage.getValue('wishList');
+                let index = arrayOfWishItem.findIndex((x) => x.courseName == name);
+                arrayOfWishItem.splice(index, 1);
+                await this.storage.setValue('wishList', arrayOfWishItem);
+                observe.next(true);
+                observe.complete();
+            }, 5);
+        });
+    }
 }

@@ -6,5 +6,7 @@ export interface IWish {
     getWishItemsFailure:boolean;
     addToWishSuccess:boolean;
     addToWishFailure:boolean;
+    deleteFromWishSuccess:boolean;
+    deleteFromWishFailure:boolean;
     error:string;
  }

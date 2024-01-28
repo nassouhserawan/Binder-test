@@ -1,5 +1,5 @@
 import { ICourses } from './../course/course.state';
-import { AddToWishSuccess } from './wish.action';
+import { AddToWishSuccess, DeleteFromWishFailure } from './wish.action';
 import { ActionTypes, ActionsUnion } from "../actions.factory";
 import { IWish } from "./wish.state";
 import { AppState } from '../app.state';
@@ -10,16 +10,18 @@ export const initialState: IWish = {
     getWishItemsFailure: false,
     addToWishSuccess: false,
     addToWishFailure: false,
-    error: ""
+    error: "",
+    deleteFromWishSuccess: false,
+    deleteFromWishFailure: false
 };
 
 
 export function WishReducer(state = initialState, action: ActionsUnion): any {
-
+    let itemArray = [...state.wishItems];
     switch (action.type) {
         // Get Courses Success
         case ActionTypes.AddToWishSuccess:
-            
+
             return Object.assign({}, state,
                 {
                     wishItems: action.payload,
@@ -31,6 +33,44 @@ export function WishReducer(state = initialState, action: ActionsUnion): any {
                 {
                     addToWishSuccess: false,
                     addToWishFailure: true,
+                })
+
+        case ActionTypes.GetWishSuccess:
+            return Object.assign({}, state,
+                {
+                    wishItems: action.wishItems,
+                    getWishItemsSuccess: true,
+                    getWishItemsFailure: false,
+                })
+
+        case ActionTypes.GetWishFailure:
+            return Object.assign({}, state,
+                {
+                    getWishItemsSuccess: false,
+                    getWishItemsFailure: true,
+                    error: action.error
+                })
+
+
+        case ActionTypes.DeleteFromWish:
+            let index = itemArray.findIndex((x) => x.courseName == action.name);
+            itemArray.splice(index, 1);
+            return Object.assign({}, state,
+                {
+                    wishItems: itemArray,
+                })
+        case ActionTypes.DeleteFromWishSuccess:
+            return Object.assign({}, state,
+                {
+                    wishItems: state.wishItems,
+                    deleteFromWishSuccess: true,
+                    deleteFromWishFailure: false
+                })
+        case ActionTypes.DeleteFromWishFailure:
+            return Object.assign({}, state,
+                {
+                    deleteFromWishSuccess: false,
+                    deleteFromWishFailure: true
                 })
         default:
             return state;
