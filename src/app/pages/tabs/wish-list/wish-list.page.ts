@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ToastService } from 'src/app/shared/ui/toast/toast.service';
 import { AppState } from 'src/app/store/app.state';
 import { AddToCart } from 'src/app/store/cart/cart.action';
 import { DeleteFromWish, GetWish } from 'src/app/store/wish/wish.action';
@@ -15,7 +16,7 @@ export class WishListPage implements OnInit {
     this.store.dispatch(new AddToCart(item));
   }
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>,private toastService:ToastService) { }
   WishList: Course[];
 
   ngOnInit() {
@@ -27,7 +28,9 @@ export class WishListPage implements OnInit {
   }
 
   DeleteFromWishList(item: Course) {
+
     this.store.dispatch(new DeleteFromWish(item.courseName));
+    this.toastService.ShowToast(item.courseName+ ' removed from wish list');
     this.store.select('wishList').pipe().subscribe((Wish) => {
       this.WishList = Wish.wishItems;
     });
