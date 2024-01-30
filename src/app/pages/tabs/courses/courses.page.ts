@@ -46,7 +46,7 @@ export class CoursesPage implements OnInit {
   }
 
   // Sort by price ASC
-  SortItemsAsc() {
+  SortItemsAsc(modal) {
     this.loadingService.showLoading();
     this.modal.getTop().then((modal) => {
       modal?.dismiss();
@@ -61,7 +61,7 @@ export class CoursesPage implements OnInit {
   }
 
   // Sort by price DSC
-  SortItemsDsc() {
+  SortItemsDsc(modal) {
     this.loadingService.showLoading();
     this.modal.getTop().then((modal) => {
       modal?.dismiss();
