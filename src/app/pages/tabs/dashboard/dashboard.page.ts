@@ -35,7 +35,9 @@ export class DashboardPage implements OnInit {
     }, 100);
   }
 
+  showFilter:boolean=false;
   FilterItems(val) {
+    this.showFilter=true;
     let arr = this.Courses.filter((x) => {
       return x.courseName.toLowerCase().indexOf(val.value) > -1 ||
         x.author.toLowerCase().indexOf(val.value) > -1;
