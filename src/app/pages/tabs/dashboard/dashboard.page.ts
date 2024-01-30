@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IonInput, ModalController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput, IonModal, ModalController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { LoadingService } from 'src/app/shared/ui/loading/loading.service';
 import { AppState } from 'src/app/store/app.state';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-
+  @ViewChild(IonModal) filterModal: IonModal;
   constructor(private store: Store<AppState>, private modal: ModalController,
     private loadingService: LoadingService, private router: Router) {
     this.store.dispatch(new GetCourses);
@@ -35,9 +35,7 @@ export class DashboardPage implements OnInit {
     }, 100);
   }
 
-  showFilter:boolean=false;
   FilterItems(val) {
-    this.showFilter=true;
     let arr = this.Courses.filter((x) => {
       return x.courseName.toLowerCase().indexOf(val.value) > -1 ||
         x.author.toLowerCase().indexOf(val.value) > -1;
@@ -46,7 +44,8 @@ export class DashboardPage implements OnInit {
   }
 
   // Sort by price ASC
-  SortItemsAsc() {
+  SortItemsAsc(modal) {
+   
     this.loadingService.showLoading();
     this.modal.getTop().then((modal) => {
       modal?.dismiss();
@@ -56,12 +55,13 @@ export class DashboardPage implements OnInit {
       this.filteredCourses = this.filteredCourses.slice().sort((a, b) => {
         return Number(a.actualPrice) - Number(b.actualPrice);
       });
+      modal.el.style.zIndex=0;
       this.loadingService.dismissLoading();
     }, 1000);
   }
 
   // Sort by price DSC
-  SortItemsDsc() {
+  SortItemsDsc(modal) {
     this.loadingService.showLoading();
     this.modal.getTop().then((modal) => {
       modal?.dismiss();
@@ -71,6 +71,7 @@ export class DashboardPage implements OnInit {
       this.filteredCourses = this.filteredCourses.slice().sort((a, b) => {
         return Number(b.actualPrice) - Number(a.actualPrice);
       });
+      modal.el.style.zIndex=0;
       this.loadingService.dismissLoading();
     }, 1000);
   }
@@ -96,6 +97,11 @@ export class DashboardPage implements OnInit {
 
   GoToCourseDetails(item: Course) {
     this.router.navigateByUrl("/course-details", { state: item })
+  }
+
+
+  didmiss(modal){
+    modal.el.style.zIndex=0;
   }
 
 }
