@@ -20,7 +20,7 @@
 
     <ion-tab-button tab="cart">
       <ion-icon [name]="selectTab == 'cart' ? 'cart' : 'cart-outline'"></ion-icon>
-      <ion-badge color="danger"></ion-badge>
+      <ion-badge *ngIf="this.numberOfItems>0" color="danger">{{numberOfItems}}</ion-badge>
       <!-- <ion-badge color="danger">1</ion-badge> -->
     </ion-tab-button>
     <ion-tab-button tab="profile">
