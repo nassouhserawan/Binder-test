@@ -10,8 +10,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list *ngFor="let item of WishList" style="margin: 7px;">
-    <ion-card>
+  <ion-list style="margin: 7px;">
+    <ion-card *ngFor="let item of WishList" >
       <ion-card-header>
         <ion-card-title>{{item.courseName}}</ion-card-title>
         <ion-card-subtitle>{{item.author}}</ion-card-subtitle>

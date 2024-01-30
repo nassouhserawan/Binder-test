@@ -13,8 +13,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let item of Cart" style="margin: 7px;">
-    <ion-card>
+  <ion-list style="margin: 7px;">
+    <ion-card  *ngFor="let item of Cart">
       <ion-card-header>
         <ion-card-title>{{item.courseName}}</ion-card-title>
         <ion-card-subtitle>{{item.author}}</ion-card-subtitle>
@@ -28,7 +28,7 @@
             <ion-label *ngIf="item.discountPercentage>0" class="discount-rate">&nbsp;%{{item.discountPercentage}} OFF</ion-label>
           </ion-col>
           <ion-col size="3" style="text-align-last: end;">
-            <ion-icon [style.color]="item.isWishItem?'red':'white'" (click)="AddToWishList(item)"  class="add-to-wish-list-btn" name="heart-outline"></ion-icon>
+            <ion-icon [style.color]="item.isWishItem?'red':'unset'" (click)="AddToWishList(item)"  class="add-to-wish-list-btn" name="heart-outline"></ion-icon>
             <ion-icon (click)="DeleteFromCart(item)" class="remove-from-cart-btn" name="trash"></ion-icon>
           </ion-col>
         </ion-row>
